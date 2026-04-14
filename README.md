@@ -1,5 +1,10 @@
 # 📚 ShelfTrack
 
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-green)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+
 Aplicação fullstack para gerenciamento de biblioteca pessoal (livros e mangás).
 
 ---
