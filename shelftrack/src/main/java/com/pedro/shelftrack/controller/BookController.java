@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/books")
 public class BookController {
 
@@ -31,21 +32,21 @@ public class BookController {
         return bookRepository.findById(id).orElse(null);
     }
 
+    @PutMapping("/{id}")
+    public Book atualizar(@PathVariable Long id, @RequestBody Book novoBook) {
+        return bookRepository.findById(id)
+                .map(book -> {
+                    book.setTitle(novoBook.getTitle());
+                    book.setAuthor(novoBook.getAuthor());
+                    book.setType(novoBook.getType());
+                    book.setStatus(novoBook.getStatus());
+                    return bookRepository.save(book);
+                })
+                .orElse(null);
+    }
+
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         bookRepository.deleteById(id);
     }
-    @PutMapping("/{id}")
-public Book atualizar(@PathVariable Long id, @RequestBody Book novoBook) {
-    return bookRepository.findById(id)
-            .map(book -> {
-                book.setTitle(novoBook.getTitle());
-                book.setAuthor(novoBook.getAuthor());
-                book.setType(novoBook.getType());
-                book.setStatus(novoBook.getStatus());
-                return bookRepository.save(book);
-            })
-            .orElse(null);
 }
-}
-
